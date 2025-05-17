@@ -3,8 +3,7 @@
 
 
 function alert_message() {
-  alert("購入品名称： " + document.getElementById("myForm").purchasedItems.value);
-  alert("金額： " + document.getElementById("myForm").ammount.value);
+  alert("購入品名称： " + document.getElementById("myForm").purchasedItems.value + "金額： " + document.getElementById("myForm").ammount.value);
 }
 
 
