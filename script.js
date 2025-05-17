@@ -10,7 +10,13 @@ function alert_message() {
   );
 }
 
-let select = document.querySelector('[name="accountItem1"]');
-select.onchange = event => { 
-  console.log(select.selectedIndex);
-}
+// プルダウン要素を取得
+const accountItem1 = document.getElementById('accountItem1');
+
+// 選択イベントのリスナーを設定
+accountItem1.addEventListener('change', (event) => {
+    // 選択された項目を取得
+    const selectedItem = event.target.value;
+    console.log(`選択された項目: ${selectedItem}`);
+  }
+);
