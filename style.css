@@ -18,6 +18,8 @@ li {
 
 form {
   justify-content: center;
+  width:460px;
+  margin:0 auto;
 }
 
 .title-container {
