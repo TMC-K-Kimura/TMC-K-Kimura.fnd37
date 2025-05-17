@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
 // 入力内容を表示
 function alertMessage() {
   alert(
-    "購入品名称： " + document.getElementById("myForm").purchasedItems.value + "\n" +
-    "金額： " + document.getElementById("myForm").amount.value + "\n" +
+    "購入品名称： " + document.getElementById("purchasedItems").value + "\n" +
+    "金額： " + document.getElementById("amount").value + "\n" +
     "勘定科目： " + document.getElementById("accountItem1").value
   );
 }
