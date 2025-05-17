@@ -25,6 +25,12 @@ body {
   height: 40px;
 }
 
+.sub-title-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
 .horizontal-line {
   width: 90%;
   height: 2px;
