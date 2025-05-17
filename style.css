@@ -2,9 +2,9 @@
 body {
   font-family: sans-serif;
   padding: 0;
-  width:1000px;
-  margin-right: auto;
-  margin-left : auto;
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
   background-color: #DAC9A6;
 }
 
