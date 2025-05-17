@@ -22,11 +22,10 @@ body {
 
 .horizontal-line {
   width: 90%;
-  display: flex;
-  justify-content: center;
   height: 2px;
   background-color: gray;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .top-line {
