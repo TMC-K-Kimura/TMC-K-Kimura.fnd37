@@ -33,6 +33,10 @@ body {
   top: auto;
 }
 
+p {
+  text-indent: 2em;
+}
+
 .bottom-line {
   position: fixed;
   bottom: auto;
