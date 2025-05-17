@@ -3,7 +3,7 @@
 
 
 function alert_message() {
-  alert("入力値: " + document.getElementById("my_form").input_field.value);
+  alert("purchasedItems: " + document.getElementById("my_form").purchasedItems.value);
 }
 
 
