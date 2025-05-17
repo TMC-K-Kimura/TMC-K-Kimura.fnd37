@@ -6,52 +6,12 @@ body {
   background-color: #DAC9A6;
 }
 
-/* ヘッダーのスタイル */
-header {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+.h1-container {
+  display: flex;
+  align-items: center;
 }
 
-/* ナビゲーションバーのスタイル */
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-nav li {
-  float: left;
-}
-
-nav li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* リンクのスタイル */
-a {
-  color: blue;
-  text-decoration: none;
-}
-
-a:hover {
-  color: red;
-}
-
-/* ボタンのスタイル */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-}
-
-button:hover {
-  background-color: #3e8e41;
+.side-image {
+  width: 50px;
+  height: 50px;
 }
