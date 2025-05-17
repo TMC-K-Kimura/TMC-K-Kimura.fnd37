@@ -2,13 +2,13 @@
 body {
   font-family: sans-serif;
   padding: 0;
-  width:700px;
+  width:1000px;
   margin-right: auto;
   margin-left : auto;
   background-color: #DAC9A6;
 }
 
-.tytle-container {
+.title-container {
   display: flex;
   align-items: center;
   text-align: center;
