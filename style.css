@@ -28,12 +28,12 @@ body {
 
 .top-line {
   position: fixed;
-  top: 0;
+  top: 100;
 }
 
 .bottom-line {
   position: fixed;
-  bottom: 0;
+  bottom: 100;
 }
 
 .content {
