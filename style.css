@@ -19,3 +19,24 @@ body {
   width: 100px;
   height: 100px;
 }
+
+.horizontal-line {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+.top-line {
+  position: fixed;
+  top: 0;
+}
+
+.bottom-line {
+  position: fixed;
+  bottom: 0;
+}
+
+.content {
+  margin-top: 20px; /* 上部のラインと重ならないように調整 */
+  margin-bottom: 20px; /* 下部のラインと重ならないように調整 */
+}
