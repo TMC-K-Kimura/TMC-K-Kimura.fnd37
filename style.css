@@ -29,12 +29,12 @@ body {
 
 .top-line {
   position: fixed;
-  top: 0;
+  top: auto;
 }
 
 .bottom-line {
   position: fixed;
-  bottom: 0;
+  bottom: auto;
 }
 
 .content {
