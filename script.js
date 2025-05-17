@@ -14,7 +14,7 @@ function alertMessage() {
   alert(
     "購入品名称： " + document.getElementById("myForm").purchasedItems.value + "\n" +
     "金額： " + document.getElementById("myForm").amount.value + "\n" +
-    "勘定科目： " + document.getElementById("accountItem1").accountItem1.value
+    "勘定科目： " + document.getElementById("accountItem1").value
   );
 }
 
