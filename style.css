@@ -21,19 +21,21 @@ body {
 }
 
 .horizontal-line {
-  width: 100%;
+  width: calc(100% - 80px); /* 横ラインを左右とも40px短くする */
   height: 2px;
   background-color: black;
+  margin-left: auto; /* 横ラインを中央に配置 */
+  margin-right: auto; /* 横ラインを中央に配置 */
 }
 
 .top-line {
   position: fixed;
-  top: 100px;
+  top: 0;
 }
 
 .bottom-line {
   position: fixed;
-  bottom: 100px;
+  bottom: 0;
 }
 
 .content {
