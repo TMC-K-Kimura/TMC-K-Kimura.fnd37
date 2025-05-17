@@ -33,7 +33,7 @@ body {
 }
 
 .horizontal-line {
-  width: 90%;
+  width: 100%;
   height: 2px;
   background-color: gray;
   margin-left: auto;
@@ -41,7 +41,7 @@ body {
 }
 
 .top-line {
-  position: fixed;
+  position: static;
   top: auto;
 }
 
