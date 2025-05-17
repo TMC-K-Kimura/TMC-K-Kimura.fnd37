@@ -11,8 +11,12 @@ function alertmessage() {
 }
 
 // プルダウン要素を取得
-const selectElement = document.getElementById("accountItem1");
 
-selectElement.addEventListener("change", function() {
-  alert("選択された値は： " + this.value);
+document.addEventListener("DOMContentLoaded", function() {
+  const selectElement = document.getElementById("accountItem1");
+
+  selectElement.addEventListener("change", function() {
+    alert("選択された値は： " + this.value);
+  });
 });
+
