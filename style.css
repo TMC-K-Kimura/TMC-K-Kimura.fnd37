@@ -42,6 +42,10 @@ p {
   text-indent: 2em;
 }
 
+li {
+  text-indent: 4em;
+}
+
 .bottom-line {
   position: fixed;
   bottom: auto;
