@@ -59,8 +59,19 @@
     </div>
     <div class="title-container">
       <form id="myForm">
-        <label for="purchasedItems">購入品名称：</label><input type="text" id="purchasedItems" name="purchasedItems">
-        <label for="ammount">金額：</label><input type="text" id="ammount" name="ammount">
+        <div>
+          <label for="purchasedItems">購入品名称：</label><input type="text" id="purchasedItems" name="purchasedItems">
+        </div>
+        <div>
+          <label for="ammount">金額：</label><input type="text" id="ammount" name="ammount">
+        </div>
+        <div>
+          <select id="accountItem1" name="accountItem1">
+            <option value="conference">交際費</option>
+            <option value="kousai">会議費</option>
+            <option value="syomou">消耗品</option>
+          </select>
+        </div>
         <button type="button" onclick="alert_message()">送信</button>
       </form>
     </div>
