@@ -8,13 +8,13 @@ body {
   background-color: #DAC9A6;
 }
 
-.h1-container {
+.tytle-container {
   display: flex;
   align-items: center;
   text-align: center;
 }
 
 .side-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
