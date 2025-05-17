@@ -1,6 +1,13 @@
 'use strict'
 // 1行目に記載している 'use strict' は削除しないでください
 
+
+function alert_message() {
+  alert("入力値: " + document.getElementById("my_form").input_field.value);
+}
+
+
+
 function test(actual, expected) {
   if (JSON.stringify(actual) === JSON.stringify(expected)) {
     console.log("OK! Test PASSED.");
