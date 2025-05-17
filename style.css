@@ -20,6 +20,11 @@ body {
   height: 100px;
 }
 
+.title-container-one-point-image {
+  width: 40px;
+  height: 40px;
+}
+
 .horizontal-line {
   width: 90%;
   height: 2px;
