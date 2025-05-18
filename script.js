@@ -1,14 +1,14 @@
 'use strict';
 
-document.addEventListener("DOMContentLoaded", function () {
-  // カウントダウンタイマー
+// カウントダウンタイマー
+document.addEventListener("DOMContentLoaded", initializeCountDownTimer);
+function initializeCountDownTimer() {
   const startButton = document.getElementById("startButton");
   const timerDisplay = document.getElementById("timer");
   if (startButton && timerDisplay) {
-    startButton.addEventListener("click", countDownTimer);
+    startButton.addEventListener("click", updateCountDownTimer);
   }
-
-  function countDownTimer() {
+  function updateCountDownTimer() {
     startButton.style.display = "none";
     let duration = 4 * 60;
     const interval = setInterval(() => {
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (accountItem1 && accountItem2) {
     accountItem1.addEventListener("change", updateSubAccountOptions);
   }
-
   function updateSubAccountOptions() {
     const selected = accountItem1.value;
     accountItem2.innerHTML = '<option value="">選択してください</option>';
@@ -70,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (accountItem1 && accountItem1Link) {
     accountItem1.addEventListener("change", displayAccountLink);
   }
-
   function displayAccountLink() {
     const selected = accountItem1.value;
     if (links[selected]) {
@@ -103,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (submitButton) {
     submitButton.addEventListener("click", alertMessage);
   }
-});
+}
 
 // ボタンの有効化・無効化
 function toggleSubmitButtonState() {
@@ -112,8 +110,9 @@ function toggleSubmitButtonState() {
   const account1 = document.getElementById("accountItem1")?.value;
   const account2 = document.getElementById("accountItem2")?.value;
   const button = document.getElementById("submitButton");
-  if (!button) return;
-
+  if (!button) {
+    return;
+  }
   if (name && amount && account1 && account2) {
     button.disabled = false;
   } else {
@@ -121,7 +120,7 @@ function toggleSubmitButtonState() {
   }
 }
 
-// アラート表示
+// 送信ボタン押下時にアラートを表示
 function alertMessage() {
   const amount = Number(document.getElementById("amount").value);
   const taxIncluded = Math.trunc(amount * 1.1);
