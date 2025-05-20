@@ -22,85 +22,86 @@ function initializeCountDownTimer() {
       }
     }, 1000);
   }
+}
 
-  // 更新日時の表示
-  const updateDate = new Date();
-  const formattedDate =
-    updateDate.getFullYear() + '年' +
-    (updateDate.getMonth() + 1) + '月' +
-    updateDate.getDate() + '日';
-  const updateDateElement = document.getElementById('updateDate');
-  if (updateDateElement) {
-    updateDateElement.textContent = '更新日：' + formattedDate;
-  }
+// 更新日時の表示
+const updateDate = new Date();
+const formattedDate =
+  updateDate.getFullYear() + '年' +
+  (updateDate.getMonth() + 1) + '月' +
+  updateDate.getDate() + '日';
+const updateDateElement = document.getElementById('updateDate');
+if (updateDateElement) {
+  updateDateElement.textContent = '更新日：' + formattedDate;
+}
 
-  // 勘定科目の下位選択肢設定
-  const accountItem1 = document.getElementById("accountItem1");
-  const accountItem2 = document.getElementById("accountItem2");
-  const subOptions = {
-    "交際費": ["接待飲食費", "贈答品費", "イベント・式典参加費", "娯楽費", "慶弔費", "その他供応費"],
-    "会議費": ["会議用飲食費", "会場費", "会議資料作成費", "通信費・オンライン会議費", "備品・消耗品費"],
-    "法定外福利厚生費": ["社員旅行費", "健康診断費", "社内イベント費", "慶弔見舞金", "福利厚生サービス利用料"]
-  };
-  if (accountItem1 && accountItem2) {
-    accountItem1.addEventListener("change", updateSubAccountOptions);
-  }
-  function updateSubAccountOptions() {
-    const selected = accountItem1.value;
-    accountItem2.innerHTML = '<option value="">選択してください</option>';
-    if (subOptions[selected]) {
-      subOptions[selected].forEach(function (item) {
-        const option = document.createElement("option");
-        option.value = item;
-        option.textContent = item;
-        accountItem2.appendChild(option);
-      });
-    }
-    toggleSubmitButtonState(); // 下位科目更新時にもボタン状態を更新
-  }
-
-  // 勘定科目のリンク表示
-  const accountItem1Link = document.getElementById("accountItem1Link");
-  const links = {
-    "交際費": "https://toyota.jp/crownestate/?padid=from_tjptop_pr_crownestate",
-    "会議費": "https://toyota.jp/grcorolla/?padid=from_tjptop_pr_grcorolla",
-    "法定外福利厚生費": "https://toyota.jp/landcruiser250/?padid=from_tjptop_pr_landcruiser250"
-  };
-  if (accountItem1 && accountItem1Link) {
-    accountItem1.addEventListener("change", displayAccountLink);
-  }
-  function displayAccountLink() {
-    const selected = accountItem1.value;
-    if (links[selected]) {
-      accountItem1Link.innerHTML =
-        '<a href="' + links[selected] + '" target="_blank">' +
-        selected + 'の詳細はこちら</a>';
-    } else {
-      accountItem1Link.innerHTML = "";
+// 勘定科目の下位選択肢設定
+const accountItem1 = document.getElementById("accountItem1");
+const accountItem2 = document.getElementById("accountItem2");
+const subOptions = {
+  "交際費": ["接待飲食費", "贈答品費", "イベント・式典参加費", "娯楽費", "慶弔費", "その他供応費"],
+  "会議費": ["会議用飲食費", "会場費", "会議資料作成費", "通信費・オンライン会議費", "備品・消耗品費"],
+  "法定外福利厚生費": ["社員旅行費", "健康診断費", "社内イベント費", "慶弔見舞金", "福利厚生サービス利用料"]
+};
+if (accountItem1 && accountItem2) {
+  accountItem1.addEventListener("change", updateSubAccountOptions);
+}
+function updateSubAccountOptions() {
+  const selected = accountItem1.value;
+  accountItem2.innerHTML = '<option value="">選択してください</option>';
+  if (subOptions[selected]) {
+    for (let i = 0; i < subOptions[selected].length; i++) {
+      const item = subOptions[selected][i];
+      const option = document.createElement("option");
+      option.value = item;
+      option.textContent = item;
+      accountItem2.appendChild(option);
     }
   }
+  toggleSubmitButtonState();
+}
 
-  // 入力・変更イベントの取得
-  const purchasedItems = document.getElementById("purchasedItems");
-  const amount = document.getElementById("amount");
-  if (purchasedItems) {
-    purchasedItems.addEventListener("input", toggleSubmitButtonState);
+// 勘定科目のリンク表示
+const accountItem1Link = document.getElementById("accountItem1Link");
+const links = {
+  "交際費": "https://toyota.jp/crownestate/?padid=from_tjptop_pr_crownestate",
+  "会議費": "https://toyota.jp/grcorolla/?padid=from_tjptop_pr_grcorolla",
+  "法定外福利厚生費": "https://toyota.jp/landcruiser250/?padid=from_tjptop_pr_landcruiser250"
+};
+if (accountItem1 && accountItem1Link) {
+  accountItem1.addEventListener("change", displayAccountLink);
+}
+function displayAccountLink() {
+  const selected = accountItem1.value;
+  if (links[selected]) {
+    accountItem1Link.innerHTML =
+      '<a href="' + links[selected] + '" target="_blank">' +
+      selected + 'の詳細はこちら</a>';
+  } else {
+    accountItem1Link.innerHTML = "";
   }
-  if (amount) {
-    amount.addEventListener("input", toggleSubmitButtonState);
-  }
-  if (accountItem1) {
-    accountItem1.addEventListener("change", toggleSubmitButtonState);
-  }
-  if (accountItem2) {
-    accountItem2.addEventListener("change", toggleSubmitButtonState);
-  }
+}
+
+// 入力・変更イベントの取得
+const purchasedItems = document.getElementById("purchasedItems");
+const amount = document.getElementById("amount");
+if (purchasedItems) {
+  purchasedItems.addEventListener("input", toggleSubmitButtonState);
+}
+if (amount) {
+  amount.addEventListener("input", toggleSubmitButtonState);
+}
+if (accountItem1) {
+  accountItem1.addEventListener("change", toggleSubmitButtonState);
+}
+if (accountItem2) {
+  accountItem2.addEventListener("change", toggleSubmitButtonState);
+}
 
   // 送信ボタンクリック時の処理
-  const submitButton = document.getElementById("submitButton");
-  if (submitButton) {
-    submitButton.addEventListener("click", alertMessage);
-  }
+const submitButton = document.getElementById("submitButton");
+if (submitButton) {
+  submitButton.addEventListener("click", alertMessage);
 }
 
 // ボタンの有効化・無効化
