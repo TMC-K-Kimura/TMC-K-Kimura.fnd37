@@ -25,15 +25,17 @@ function initializeCountDownTimer() {
 }
 
 // 更新日時の表示
-const updateDate = new Date();
-const formattedDate =
-  updateDate.getFullYear() + '年' +
-  (updateDate.getMonth() + 1) + '月' +
-  updateDate.getDate() + '日';
-const updateDateElement = document.getElementById('updateDate');
-if (updateDateElement) {
-  updateDateElement.textContent = '更新日：' + formattedDate;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const updateDate = new Date();
+  const formattedDate =
+    updateDate.getFullYear() + '年' +
+    (updateDate.getMonth() + 1) + '月' +
+    updateDate.getDate() + '日';
+  const updateDateElement = document.getElementById('updateDate');
+  if (updateDateElement) {
+    updateDateElement.textContent = '更新日：' + formattedDate;
+  }
+});
 
 // 勘定科目の下位選択肢設定
 const accountItem1 = document.getElementById("accountItem1");
