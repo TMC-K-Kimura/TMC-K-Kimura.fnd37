@@ -8,6 +8,10 @@ body {
   background-color: #DAC9A6;
 }
 
+h3 {
+  text-indent: 2em;
+}
+
 p {
   text-indent: 2em;
 }
