@@ -1,7 +1,10 @@
 'use strict';
 
-// カウントダウンタイマー
-document.addEventListener("DOMContentLoaded", initializeCountDownTimer);
+// カウントダウンタイマーの定義
+/**
+ * @param {} なし
+ * @returns {} 何も返さない（DOM操作のみ）
+ */
 function initializeCountDownTimer() {
   const startButton = document.getElementById("startButton");
   const timerDisplay = document.getElementById("timer");
@@ -24,7 +27,10 @@ function initializeCountDownTimer() {
   }
 }
 
-// 更新日時の表示
+// カウントダウンタイマーの呼び出し
+initializeCountDownTimer();
+
+// 更新日時の取得と表示
 const updateDate = new Date();
 const formattedDate =
   updateDate.getFullYear() + '年' +
@@ -35,14 +41,42 @@ if (updateDateElement) {
   updateDateElement.textContent = '更新日：' + formattedDate;
 }
 
-// 勘定科目の下位選択肢設定
-const accountItem1 = document.getElementById("accountItem1");
-const accountItem2 = document.getElementById("accountItem2");
+// Formの各項目の変数設定
+const purchasedItems = document.getElementById("purchasedItems");  //支払の名称
+const amount = document.getElementById("amount");  //税抜き金額
+const accountItem1 = document.getElementById("accountItem1");  //上位勘定科目
+const accountItem2 = document.getElementById("accountItem2");  //下位勘定科目
 const subOptions = {
   "交際費": ["接待飲食費", "贈答品費", "イベント・式典参加費", "娯楽費", "慶弔費", "その他供応費"],
   "会議費": ["会議用飲食費", "会場費", "会議資料作成費", "通信費・オンライン会議費", "備品・消耗品費"],
   "法定外福利厚生費": ["社員旅行費", "健康診断費", "社内イベント費", "慶弔見舞金", "福利厚生サービス利用料"]
-};
+};  //下位勘定科目の選択肢
+const accountItem1Link = document.getElementById("accountItem1Link");  //上位勘定科目の解説へのリンク
+const links = {
+  "交際費": "https://toyota.jp/crownestate/?padid=from_tjptop_pr_crownestate",
+  "会議費": "https://toyota.jp/grcorolla/?padid=from_tjptop_pr_grcorolla",
+  "法定外福利厚生費": "https://toyota.jp/landcruiser250/?padid=from_tjptop_pr_landcruiser250"
+};  //上位勘定科目の開設のリンク先
+
+// Formの各項目にイベントリスナーを設定
+if (purchasedItems) {
+  purchasedItems.addEventListener("input", toggleSubmitButtonState);
+}
+if (amount) {
+  amount.addEventListener("input", toggleSubmitButtonState);
+}
+if (accountItem1) {
+  accountItem1.addEventListener("change", toggleSubmitButtonState);
+}
+if (accountItem2) {
+  accountItem2.addEventListener("change", toggleSubmitButtonState);
+}
+
+// 上位勘定科目変更時に下位勘定科目の選択肢を更新
+/**
+ * @param {} なし
+ * @returns {} 何も返さない（DOM操作のみ）
+ */
 if (accountItem1 && accountItem2) {
   accountItem1.addEventListener("change", updateSubAccountOptions);
 }
@@ -61,13 +95,11 @@ function updateSubAccountOptions() {
   toggleSubmitButtonState();
 }
 
-// 勘定科目のリンク表示
-const accountItem1Link = document.getElementById("accountItem1Link");
-const links = {
-  "交際費": "https://toyota.jp/crownestate/?padid=from_tjptop_pr_crownestate",
-  "会議費": "https://toyota.jp/grcorolla/?padid=from_tjptop_pr_grcorolla",
-  "法定外福利厚生費": "https://toyota.jp/landcruiser250/?padid=from_tjptop_pr_landcruiser250"
-};
+// 上位勘定科目変更時に勘定科目のリンクを更新
+/**
+ * @param {} なし
+ * @returns {} 何も返さない（DOM操作のみ）
+ */
 if (accountItem1 && accountItem1Link) {
   accountItem1.addEventListener("change", displayAccountLink);
 }
@@ -82,29 +114,11 @@ function displayAccountLink() {
   }
 }
 
-// 入力・変更イベントの取得
-const purchasedItems = document.getElementById("purchasedItems");
-const amount = document.getElementById("amount");
-if (purchasedItems) {
-  purchasedItems.addEventListener("input", toggleSubmitButtonState);
-}
-if (amount) {
-  amount.addEventListener("input", toggleSubmitButtonState);
-}
-if (accountItem1) {
-  accountItem1.addEventListener("change", toggleSubmitButtonState);
-}
-if (accountItem2) {
-  accountItem2.addEventListener("change", toggleSubmitButtonState);
-}
-
-  // 送信ボタンクリック時の処理
-const submitButton = document.getElementById("submitButton");
-if (submitButton) {
-  submitButton.addEventListener("click", alertMessage);
-}
-
-// ボタンの有効化・無効化
+// 全項目入力済みの場合のみ送信ボタンを有効化する
+/**
+ * @param {} なし
+ * @returns {} 何も返さない（DOM操作のみ）
+ */
 function toggleSubmitButtonState() {
   const name = document.getElementById("purchasedItems")?.value.trim();
   const amount = document.getElementById("amount")?.value.trim();
@@ -121,7 +135,11 @@ function toggleSubmitButtonState() {
   }
 }
 
-// 送信ボタン押下時にアラートを表示
+// 送信ボタン押下時に画面にアラートを表示
+/**
+ * @param {} なし
+ * @returns {} 何も返さない（アラート表示のみ）
+ */
 function alertMessage() {
   const amount = Number(document.getElementById("amount").value);
   const taxIncluded = Math.trunc(amount * 1.1);
